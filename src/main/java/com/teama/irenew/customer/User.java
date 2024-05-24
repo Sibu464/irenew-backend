@@ -18,6 +18,10 @@ import java.util.List;
 @Table(name = "customers")
 public class User implements UserDetails {
 
+
+
+
+    @Getter
     @Id
     @GeneratedValue
     private Integer id;
@@ -39,6 +43,9 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+    public Integer getId() {
+        return id;
     }
 
     @Override
