@@ -1,14 +1,21 @@
 package com.teama.irenew.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
+import com.teama.irenew.customer.Role;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "cart")
 public class CartEntity {
 
+//    This entity will represent a shopping cart, contains multiple items that user intends to purchase.
+//    Cart: Represents the shopping cart itself.
+//    CartItem: Represents an item within the cart.
     @Id
     @GeneratedValue
     private Integer id;
@@ -37,6 +44,23 @@ public class CartEntity {
     @Column(name = "")
     private String specs;
 
+//  Specifies that the role should be persisted as a string in the database.
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getDescription(){
+        return description;
+    }
+
+    @Override
+    public String getCondition() {
+        return condition;
+    }
 
 }
