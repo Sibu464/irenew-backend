@@ -1,2 +1,4 @@
-package com.teama.irenew.dto;public class holder {
+package com.teama.irenew.dto;
+
+public class holder {
 }

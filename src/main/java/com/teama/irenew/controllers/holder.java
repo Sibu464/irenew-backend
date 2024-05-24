@@ -1,2 +1,4 @@
-package com.teama.irenew.controllers;public class holder {
+package com.teama.irenew.controllers;
+
+public class holder {
 }
