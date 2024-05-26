@@ -15,20 +15,13 @@ public class AuthenticationController {
 
     @PostMapping("/register")
 
-        if(repository.findByEmail(request.getEmail()).isPresent())
-
-    {
-        return ResponseEntity.badRequest().body("User email exists");
-    }
 
 
     ///////////having duplicates causes a 403/////////////
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
-    if(repository.findByEmail(request.getEmail()).isPresent()){
-        return ResponseEntity.badRequest().body( "User email exists");
-    }
+
         return ResponseEntity.ok(service.register(request));
     }
 
