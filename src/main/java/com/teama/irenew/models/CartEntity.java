@@ -45,20 +45,20 @@ public class CartEntity {
     private String specs;
 
 //  Specifies that the role should be persisted as a string in the database.
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
 
-    @Override
+//    @Override
     public String getTitle() {
         return title;
     }
 
-    @Override
+//    @Override
     public String getDescription(){
         return description;
     }
 
-    @Override
+//   @Override
     public String getCondition() {
         return condition;
     }
