@@ -17,7 +17,7 @@ public class CartEntity {
 //    Cart: Represents the shopping cart itself.
 //    CartItem: Represents an item within the cart.
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "title")
