@@ -1,5 +1,6 @@
 package com.teama.irenew.config;
 
+import com.teama.irenew.customer.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -36,8 +37,10 @@ public class JwtService {
             Map<String, Object> extraClaims,
             UserDetails userDetails
 
-    ) {
+    ) {   User user = (User) userDetails;
+        extraClaims.put("id", user.getId());
         return Jwts
+
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())

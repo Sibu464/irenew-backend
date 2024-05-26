@@ -18,15 +18,13 @@ import java.util.List;
 @Table(name = "customers")
 public class User implements UserDetails {
 
-
-
-
     @Getter
     @Id
     @GeneratedValue
     private Integer id;
-    private String firstname;
-    private String lastname;
+    private String name;
+    //private String firstname;
+    //private String lastname;
     private String email;
 
     @Column(length = 500, nullable = false)
@@ -44,9 +42,7 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
-    public Integer getId() {
-        return id;
-    }
+
 
     @Override
     public String getUsername() {
@@ -71,5 +67,13 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }
