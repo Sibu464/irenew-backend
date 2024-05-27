@@ -12,19 +12,6 @@ public class ProductService {
     @Autowired
     private com.teama.irenew.repository.ProductRepo productRepo;
 
-//    public void addProduct(Product product){
-//        productRepo.save(product);
-//    }
-//    public void removeProduct(Long productID){
-//        productRepo.deleteById(productID);
-//    }
-//    public List<Product> getCartItems(){
-//        return  productRepo.findAll();
-//    }
-//    public  void clearCart(){
-//        productRepo.deleteAll();
-//    }
-
     public List<Product> getAllProducts() {
         return  productRepo.findAll();
     }
@@ -33,11 +20,7 @@ public class ProductService {
         productRepo.save(product);
     }
 
-//    public Product getProductById(Long id) {
-//        return  productRepo.findById(id);
-//    }
-
-    public Product getProductById(Long id) { //Return type of todo is expected
+    public Product getProductById(Long id) {
         Optional<Product> optional = productRepo.findById(id);
         Product product;
         if(optional.isPresent()) {
