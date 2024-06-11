@@ -1,5 +1,6 @@
 package com.teama.irenew.customer;
 
+import com.teama.irenew.models.Address;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +19,7 @@ import java.util.List;
 @Table(name = "customers")
 public class User implements UserDetails {
 
-    @Getter
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -32,6 +33,9 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Address address;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
