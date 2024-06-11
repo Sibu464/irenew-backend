@@ -16,12 +16,10 @@ public class AuthenticationController {
     @PostMapping("/register")
 
 
-
     ///////////having duplicates causes a 403/////////////
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
-
         return ResponseEntity.ok(service.register(request));
     }
 

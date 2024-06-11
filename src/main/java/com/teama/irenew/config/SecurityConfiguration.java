@@ -24,7 +24,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**","/api/v1/auth/register","/api/v1/auth/login","irenew/products/**","irenew/users/**")
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/auth/register", "/api/v1/auth/login", "irenew/products/**", "irenew/cart/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
@@ -32,7 +32,6 @@ public class SecurityConfiguration {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
 
         return http.build();
     }
