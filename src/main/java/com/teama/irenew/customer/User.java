@@ -1,5 +1,6 @@
 package com.teama.irenew.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.teama.irenew.models.Address;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -34,8 +36,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Address address;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -77,7 +80,15 @@ public class User implements UserDetails {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 }

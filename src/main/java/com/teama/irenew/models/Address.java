@@ -1,29 +1,39 @@
 package com.teama.irenew.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.teama.irenew.customer.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @Entity
-@Table(name="addresses")
+@Table(name="address")
 public class Address  {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
-
+    /** The first line of address. */
+    @Column(name = "street", nullable = false, length = 512)
     private String street;
-    private String streetName;
-    private String suburb;
-    private String cityProvince;
-    private Integer postalCode;
+    /** The second line of address. */
+    @Column(name = "address_line_2", length = 512)
+    private String addressLine2;
+    /** The city of the address. */
+    @Column(name = "city", nullable = false)
+    private String city;
+    /** The country of the address. */
+    @Column(name = "country", nullable = false, length = 75)
+    private String country;
 
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     public Integer getId() {
         return id;
@@ -41,36 +51,28 @@ public class Address  {
         this.street = street;
     }
 
-    public String getStreetName() {
-        return streetName;
+    public String getAddressLine2() {
+        return addressLine2;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
     }
 
-    public String getSuburb() {
-        return suburb;
+    public String getCity() {
+        return city;
     }
 
-    public void setSuburb(String suburb) {
-        this.suburb = suburb;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Integer getPostalCode() {
-        return postalCode;
+    public String getCountry() {
+        return country;
     }
 
-    public void setPostalCode(Integer postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCityProvince() {
-        return cityProvince;
-    }
-
-    public void setCityProvince(String cityProvince) {
-        this.cityProvince = cityProvince;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public User getUser() {
@@ -80,4 +82,10 @@ public class Address  {
     public void setUser(User user) {
         this.user = user;
     }
+
+    /** The user the address is associated with. */
+
+
+
+
 }
