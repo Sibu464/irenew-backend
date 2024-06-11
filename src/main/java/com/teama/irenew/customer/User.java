@@ -2,6 +2,7 @@ package com.teama.irenew.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.teama.irenew.models.Address;
+import com.teama.irenew.models.Cart;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,6 +40,10 @@ public class User implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Address> addresses = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Cart> cartItems = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -90,5 +95,8 @@ public class User implements UserDetails {
 
     public List<Address> getAddresses() {
         return addresses;
+    }
+    public List<Cart> getCartItems() {
+        return cartItems;
     }
 }

@@ -57,6 +57,8 @@ public ResponseEntity<List<Address>> getAddress(
         refUser.setId
                 (userId);
         address.setUser(refUser);
+        System.out.println("/////////////////////////////////////////////////");
+        System.out.println(address.getCity());
         Address savedAddress = addressDAO.save(address);
 
         return ResponseEntity.ok(savedAddress);
